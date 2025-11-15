@@ -39,17 +39,39 @@ const styles = StyleSheet.create({
   titleContainer: {
     marginTop: SPACING.large,
   },
+
+  // FIX: Mapping 'largeText' to the defined 'titleText'
+  largeText: {
+    fontSize: FONT_SIZE.large,
+    textAlign: "center",
+    fontWeight: '800',
+    color: COLORS.white,
+  },
+  // Keep the original name for clarity if needed:
   titleText: {
     fontSize: FONT_SIZE.large,
     textAlign: "center",
-    fontWeight: 800,
+    fontWeight: '800',
+    color: COLORS.white,
+  },
+
+  // FIX: Mapping 'smallText' to the defined 'titleSubText'
+  smallText: {
+    fontWeight: '300',
+    fontSize: FONT_SIZE.small,
+    textAlign: "center",
     color: COLORS.white,
   },
   titleSubTextContainer: {
     marginTop: SPACING.medium,
   },
+  // FIX: Mapping 'subTextGroup' to the defined 'titleSubTextContainer'
+  subTextGroup: {
+    marginTop: SPACING.medium,
+    textAlign: "center",
+  },
   titleSubText: {
-    fontWeight: 300,
+    fontWeight: '300',
     fontSize: FONT_SIZE.small,
     textAlign: "center",
     color: COLORS.white,
@@ -63,7 +85,7 @@ const styles = StyleSheet.create({
   },
   buttonPrimaryText: {
     fontSize: FONT_SIZE.small,
-    fontWeight: 300,
+    fontWeight: '300',
     textAlign: "center",
   },
   buttonSecondary: {
@@ -76,7 +98,7 @@ const styles = StyleSheet.create({
   },
   buttonSecondaryText: {
     fontSize: FONT_SIZE.small,
-    fontWeight: 300,
+    fontWeight: '300',
     textAlign: "center",
     color: COLORS.white,
   },
@@ -93,6 +115,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: SPACING.small,
     marginTop: 19,
+  },
+  navGroup: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  // Add other necessary styling properties
   },
 });
 

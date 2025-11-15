@@ -1,16 +1,45 @@
-import { Text, TextInput, View, TouchableOpacity, Image } from "react-native";
-import { styles } from "@/styles";
+import { Text, TextInput, View, TouchableOpacity, Image, ScrollView } from "react-native";
+import { styles as mainStyles } from "@styles/_mainstyle";
+import { styles as joinStyles } from "@styles/_join";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
+// Import useRouter for navigation
+import { useRouter } from "expo-router";
 
-export default function Index() {
+// NOTE: Using 'any' to resolve TypeScript issues related to style merging without explicit type definitions.
+const styles = {
+  ...mainStyles,
+  ...joinStyles,
+} as any;
+
+export default function SignInScreen() {
+  const router = useRouter();
+
+  // Navigation function for the back arrow (Home)
+  const handleBack = () => {
+    // Use replace to go back to the index page (home) and clear the navigation history
+    router.replace("/");
+  };
+
+  // Navigation function for the "Join now" link
+  const handleJoin = () => {
+    // Navigate to the join page (sign up page)
+    router.push("/join");
+  };
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollContentContainer}>
+        {/* Back Button and Logo */}
         <View style={styles.navGroup}>
-          <Ionicons name="arrow-back" size={25} />
-          <Image source={require('@/assets/images/logo.png')} />
+          {/* Back Arrow Button */}
+          <TouchableOpacity onPress={handleBack}>
+            <Ionicons name="arrow-back" size={25} />
+          </TouchableOpacity>
+          <Image source={require('@/assets/images/logo-green.png')} />
         </View>
+
         <Text style={styles.largeText}>Sign in to your</Text>
         <Text style={styles.largeText}>Account</Text>
         <Text style={styles.smallText}>
@@ -82,10 +111,14 @@ export default function Index() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.subTextGroup}>
-          <Text style={styles.subText}>Don't have an account?</Text>
-          <Text style={styles.subTextJoin}>Join now</Text>
+        <View style={styles.signupgroup}>
+          <Text style={styles.subText}>Don&apos;t have an account?</Text>
+          {/* Navigation Link to Join */}
+          <TouchableOpacity onPress={handleJoin}>
+            <Text style={styles.subTextJoin}>Join now</Text>
+          </TouchableOpacity>
         </View>
+        </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
